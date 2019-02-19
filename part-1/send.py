@@ -1,8 +1,9 @@
 import pika
+import time
 
 # set the connection
 # connecting to kubernetes hosted HA cluster
-connection = pika.BlockingConnection(pika.ConnectionParameters('https://rabbitmq:5672'))
+connection = pika.BlockingConnection(pika.URLParameters('amqp://guest:guest@localhost:5672/%2F'))
 channel = connection.channel()
 
 # Create the hello queue, which is where the message is delivered
